@@ -15,15 +15,6 @@ require "db-connection.php";
 </head>
 <body>
 <?php
-// Додавання поля ID
-$sql = "ALTER TABLE educational_part ADD COLUMN ID INT PRIMARY KEY AUTO_INCREMENT";
-if (mysqli_query($conn, $sql)) {
-    echo "Поле ID додано успішно<br/>\n";
-} else {
-    echo "Помилка додавання поля ID: " . mysqli_error($conn) . "<br/>\n";
-}
-echo "<br/>\n";
-
 
 // Зміна даних про певного студента
 $sql = "UPDATE educational_part SET `attendance` = '85%' WHERE `student_id` = 3";
