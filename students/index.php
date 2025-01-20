@@ -18,9 +18,9 @@ require "db-connection.php";
 
 // Зміна даних про певного студента
 $sql = "UPDATE educational_part SET `attendance` = '85%' WHERE `student_id` = 3";
-echo "Зміна даних про певного студента<br/>\n";
+echo "<h2>Зміна даних про певного студента</h2>";
 if (mysqli_query($conn, $sql)) {
-    echo "Дані про студента змінені успішно<br/>\n";
+    echo "<p>Дані про студента змінені успішно</p><br/>\n";
 } else {
     echo "Помилка зміни даних про студента: " . mysqli_error($conn) . "<br/>\n";
 }
@@ -29,7 +29,7 @@ echo "<br/>\n";
 
 // Вивід студентів, в яких середній бал вище за 4,5 за спаданням дати народження
 $sql = "SELECT s.student_name, s.student_surname, s.sudent_burthday, sm.average_mark, sa.attendance FROM students s JOIN educational_part sm ON s.student_id = sm.student_id JOIN educational_part sa ON s.student_id = sa.student_id WHERE sm.average_mark > 4.5 ORDER BY sm.average_mark DESC";
-echo "Вивід студентів, в яких середній бал вище за 4,5 за спаданням дати народження<br/>\n";
+echo "<h2>Вивід студентів, в яких середній бал вище за 4,5 за спаданням дати народження</h2><br/>\n";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -46,13 +46,13 @@ if ($result->num_rows > 0) {
     }
     echo "</table>";
 } else {
-    echo "Результатів не знайдено<br/>\n";
+    echo "Результатів не знайдено<br/><br/>\n";
 }
 echo "<br/>\n";
 
 // Вивід імені, прізвища, назви предмета, кількості годин
 $sql = "SELECT s.student_name, s.student_surname, sub.subject_name, sub.subject_hours FROM students s JOIN students_and_subjects ss ON s.student_id = ss.student_id JOIN subjects sub ON ss.subject_name = sub.subject_name";
-echo "Вивід імені, прізвища, назви предмета, кількості годин<br/>\n";
+echo "<h2>Вивід імені, прізвища, назви предмета, кількості годин</h2><br/>\n";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
